@@ -1,0 +1,32 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Anillo de diamantes",
+        "price": 10000,
+        "stock": 7,
+        "description": "Anillo de oro blanco con diamantes engastados",
+        "category": "Anillos",
+        "img": "https://sc04.alicdn.com/kf/HTB1rUDCb9SD3KVjSZFKq6z10VXau.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Collar de perlas",
+        "price": 5000,
+        "stock": 3,
+        "description": "Collar de perlas cultivadas con cierre de oro amarillo",
+        "category": "Collares",
+        "img": "https://cf.shopee.com.co/file/98889a78adfb5f006451285e64859567"
+      },
+      {
+        "id": 3,
+        "name": "Pulsera de diamantes",
+        "price": 8000,
+        "stock": 9,
+        "description": "Pulsera de oro blanco con diamantes engastados",
+        "category": "Pulseras",
+        "img": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71GW1a951VL._AC_UY395_.jpg"
+      }
+
+    ]
+  }
