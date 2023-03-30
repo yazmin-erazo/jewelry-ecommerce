@@ -11,39 +11,46 @@ const ProductPresenter = ({
   viewMode,
   deleteProductById,
   updateProductById,
+  onOpen,
+  isCreated,
 }) => {
   return (
-    <section className="mt-8 container m-auto">
+    <section className="mt-8 container m-auto ">
       <div>
-        <div className="flex justify-between items-center">
-          <Button label="Agregar producto" icon={faPlusCircle} onClick={() => console.log('Click')} />
+        <div className="flex justify-between items-center ">
+          <Button
+            label="Agregar producto"
+            icon={faPlusCircle}
+            onClick={onOpen}
+          />
           <Toggle viewMode={viewMode} handleToggle={handleToggle} />
         </div>
-
-        {viewMode === "list" && <ProductTableHeader />}
-        {viewMode === "list"
-          ? items.map((product) => {
-              return (
-                <div key={product.id}>
-                  <ProductList
-                    product={product}
-                    updateProductById={updateProductById}
-                    deleteProductById={deleteProductById}
-                  />
-                </div>
-              );
-            })
-          : items.map((product) => {
-              return (
-                <div key={product.id} className="lg:w-1/2 lg:inline-block">
-                  <ProductCards
-                    product={product}
-                    updateProductById={updateProductById}
-                    deleteProductById={deleteProductById}
-                  />
-                </div>
-              );
-            })}
+        <div className="flex flex-wrap">
+          {viewMode === "list" && <ProductTableHeader />}
+          {viewMode === "list"
+            ? items.map((product) => {
+                return (
+                  <div key={product.id}>
+                    <ProductList
+                      product={product}
+                      updateProductById={updateProductById}
+                      deleteProductById={deleteProductById}
+                    />
+                  </div>
+                );
+              })
+            : items.map((product) => {
+                return (
+                  <div key={product.id} className="w-full lg:w-1/2 lg:inline-block">
+                    <ProductCards
+                      product={product}
+                      updateProductById={updateProductById}
+                      deleteProductById={deleteProductById}
+                    />
+                  </div>
+                );
+              })}
+        </div>
       </div>
     </section>
   );

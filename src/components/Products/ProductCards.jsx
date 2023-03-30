@@ -1,17 +1,30 @@
 const ProductCards = ({ product, deleteProductById, updateProductById }) => {
+  const ringImg = "https://i.imgur.com/nIrKEXq.jpeg";
+  const earringsImg = "https://i.imgur.com/tRC15fU.jpeg";
+  const watchImg = "https://i.imgur.com/9KWnset.jpeg";
+  const bracelet = "https://i.imgur.com/oACPehg.jpeg";
+  const neckalceImg = "https://i.imgur.com/XE8zM46.jpeg"
+
   return (
     <section className="mt-8 mx-3 mb-4 bg-white flex flex-col sm:flex-row rounded-lg overflow-hidden border shadow-md">
       <div className="flex-shrink-0 self-center">
         <div className=" h-36  sm:h-56 sm:w-56">
           <img
             className="object-center sm:object-cover sm:h-full sm:w-full"
-            src={product.img}
+            src={product.img === "" ? 
+            (product.category === "anillos" ? ringImg : 
+             product.category === "aretes" ? earringsImg :
+             product.category === "reloj" ? watchImg :
+             product.category === "pulseras" ? bracelet :
+             neckalceImg)
+            : product.img
+          }
             alt={product.name}
           />
         </div>
       </div>
 
-      <div className="flex-1 bg-white p-5 flex flex-col justify-between ">
+      <div className="flex-1 bg-white p-5 flex flex-col justify-between">
         <div className="flex-1">
           <div className="flex items-start justify-between">
             <div>
