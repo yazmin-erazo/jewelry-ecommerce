@@ -28,19 +28,19 @@
       "img": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71GW1a951VL._AC_UY395_.jpg"
     },
     {
-      "name": "Mias",
-      "price": 9000,
-      "stock": "15",
-      "description": "Desc",
+      "name": "Collar de perlas",
+      "price": "12000",
+      "stock": "5",
+      "description": "Collar de perlas cultivadas de agua dulce, montado en oro amarillo de 14K",
       "category": "collares",
       "img": "",
       "id": 4
     },
     {
-      "name": "React-App",
-      "price": 7000,
-      "stock": "23",
-      "description": "bfb",
+      "name": "Anillo de compromiso",
+      "price": "22000",
+      "stock": "2",
+      "description": "Anillo de compromiso con diamante solitario de corte princesa, montado en platino",
       "category": "anillos",
       "img": "",
       "id": 5

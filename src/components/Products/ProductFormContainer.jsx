@@ -51,7 +51,6 @@ const ProductFormContainer = ({ onClose, setIsCreated, selectedProduct }) => {
       axios
         .put(`${API_URL}/${selectedProduct.id}`, newProduct)
         .then(() => {
-          onClose();
         })
         .catch((error) => console.log("Error al actualizar el producto", error));
     } else {
@@ -66,14 +65,13 @@ const ProductFormContainer = ({ onClose, setIsCreated, selectedProduct }) => {
       category: "default",
       img: "",
     });
-
+    onClose()
     setIsCreated(true);    
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
-    
   };
  
 

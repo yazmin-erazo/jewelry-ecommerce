@@ -11,7 +11,7 @@ const ProductTableHeader = () => {
               <th className="w-1/12 px-2 py-2 text-center ">
                 <span className="text-gray-300 font-normal">Img</span>
               </th>
-              <th className="w-1/12 px-2 py-2 overflow-ellipsis whitespace-nowrap truncate">
+              <th className="w-1/12 px-2 py-2 overflow-ellipsis whitespace-nowrap truncate text-left">
                 <span className="text-gray-300 font-normal">Producto</span>
               </th>
               <th className="w-1/12 px-2 py-2">
