@@ -1,9 +1,15 @@
-const ProductCards = ({ product, deleteProductById, updateProductById }) => {
+const ProductCards = ({
+  product,
+  deleteProductById,
+  updateProductById,
+  setSelectedProduct,
+  setShowModal,
+}) => {
   const ringImg = "https://i.imgur.com/nIrKEXq.jpeg";
   const earringsImg = "https://i.imgur.com/tRC15fU.jpeg";
   const watchImg = "https://i.imgur.com/9KWnset.jpeg";
   const bracelet = "https://i.imgur.com/oACPehg.jpeg";
-  const neckalceImg = "https://i.imgur.com/XE8zM46.jpeg"
+  const neckalceImg = "https://i.imgur.com/XE8zM46.jpeg";
 
   return (
     <section className="mt-8 mx-3 mb-4 bg-white flex flex-col sm:flex-row rounded-lg overflow-hidden border shadow-md">
@@ -11,14 +17,19 @@ const ProductCards = ({ product, deleteProductById, updateProductById }) => {
         <div className=" h-36  sm:h-56 sm:w-56">
           <img
             className="object-center sm:object-cover sm:h-full sm:w-full"
-            src={product.img === "" ? 
-            (product.category === "anillos" ? ringImg : 
-             product.category === "aretes" ? earringsImg :
-             product.category === "reloj" ? watchImg :
-             product.category === "pulseras" ? bracelet :
-             neckalceImg)
-            : product.img
-          }
+            src={
+              product.img === ""
+                ? product.category === "anillos"
+                  ? ringImg
+                  : product.category === "aretes"
+                  ? earringsImg
+                  : product.category === "reloj"
+                  ? watchImg
+                  : product.category === "pulseras"
+                  ? bracelet
+                  : neckalceImg
+                : product.img
+            }
             alt={product.name}
           />
         </div>
@@ -46,16 +57,20 @@ const ProductCards = ({ product, deleteProductById, updateProductById }) => {
         <div className="flex justify-between items-end mt-4 border-t">
           <div className="flex">
             <button
-              onClick={() => updateProductById(product.id)}
-              className="text-sm px-6 py-1 bg-blue-600 text-white rounded-full hover:bg-gray-700 mr-3 mt-2"
-            >
-              Editar
-            </button>
-            <button
               onClick={() => deleteProductById(product.id)}
-              className="text-sm px-6 py-1 bg-slate-800 hover:bg-red-500 text-white rounded-full hover:bg-red-500v mt-2"
+              className="text-sm px-6 py-1 bg-slate-800 hover:bg-red-500 text-white rounded-full hover:bg-red-500v mt-2 mr-3"
             >
               Eliminar
+            </button>
+            <button
+              onClick={() => {
+                setSelectedProduct(null);
+                setShowModal(true);
+                updateProductById(product.id)
+              }}
+              className="text-sm px-6 py-1 bg-blue-600 text-white rounded-full hover:bg-gray-700  mt-2"
+            >
+              Editar
             </button>
           </div>
           <div className=" w-1/6 text-gray-600 text-right capitalize text-sm">

@@ -15,7 +15,7 @@
       "price": 5000,
       "stock": 3,
       "description": "Collar de perlas cultivadas con cierre de oro amarillo",
-      "category": "Collares",
+      "category": "collares",
       "img": "https://cf.shopee.com.co/file/98889a78adfb5f006451285e64859567"
     },
     {
@@ -24,7 +24,7 @@
       "price": 8000,
       "stock": 9,
       "description": "Pulsera de oro blanco con diamantes engastados",
-      "category": "Pulseras",
+      "category": "pulseras",
       "img": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71GW1a951VL._AC_UY395_.jpg"
     },
     {

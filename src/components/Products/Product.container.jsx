@@ -10,13 +10,13 @@ const ProductContainer = () => {
   const [items, setItems] = useState([]);
   const [viewMode, setViewMode] = useState("list");
   const [isCreated, setIsCreated] = useState(false);
-  const [isDeleted, setisDeleted] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     setIsCreated(false);
-    setisDeleted(false);
+    setIsDeleted(false);
     const products = axios.get(API_URL);
     products
       .then((response) => setItems(response.data))
@@ -28,12 +28,20 @@ const ProductContainer = () => {
   };
 
   const deleteProductById = (id) => {
-    axios.delete(`${API_URL}/${id}`);
-    setisDeleted(true);
+    axios
+      .delete(`${API_URL}/${id}`)
+      .then(() => setIsDeleted(true))
+      .catch((error) => console.log("Error al eliminar el producto", error));
   };
 
   const updateProductById = (id) => {
-    axios.patch(`${API_URL}/${id}`, {});
+    axios
+      .get(`${API_URL}/${id}`)
+      .then((response) => {
+        setSelectedProduct(response.data);
+        setShowModal(true);
+      })
+      .catch((error) => console.log("Error al obtener el producto", error));
   };
 
   const handleOpenModal = () => {
@@ -41,11 +49,9 @@ const ProductContainer = () => {
   };
 
   const handleCloseModal = () => {
+    setSelectedProduct(null);
     setShowModal(false);
   };
-
-
-
 
   return (
     <div className="">
@@ -56,6 +62,8 @@ const ProductContainer = () => {
         deleteProductById={deleteProductById}
         updateProductById={updateProductById}
         onOpen={handleOpenModal}
+        setSelectedProduct={setSelectedProduct}
+        setShowModal={setShowModal}
       />
 
       {showModal && (
@@ -64,6 +72,7 @@ const ProductContainer = () => {
             onClose={handleCloseModal}
             setIsCreated={setIsCreated}
             isCreated={isCreated}
+            selectedProduct={selectedProduct}
           />
         </Modal>
       )}

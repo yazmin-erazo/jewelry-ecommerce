@@ -4,7 +4,7 @@ import ProductFormPresenter from "./ProductFormPresenter";
 
 const API_URL = "http://localhost:5000/products";
 
-const ProductFormContainer = ({ onClose, setIsCreated }) => {
+const ProductFormContainer = ({ onClose, setIsCreated, selectedProduct }) => {
   const [newProduct, setNewProduct] = useState({
     name: "",
     price: "",
@@ -16,8 +16,16 @@ const ProductFormContainer = ({ onClose, setIsCreated }) => {
 
   const [error, setError] = useState(false);
 
+  useEffect(() => {
+    if (selectedProduct) {
+      setNewProduct(selectedProduct);
+    }
+  }, [selectedProduct]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+
 
     if (
       !newProduct.name ||
@@ -39,7 +47,17 @@ const ProductFormContainer = ({ onClose, setIsCreated }) => {
       img: newProduct.img,
     };
 
-    axios.post(API_URL, data);
+    if (selectedProduct) {
+      axios
+        .put(`${API_URL}/${selectedProduct.id}`, newProduct)
+        .then(() => {
+          onClose();
+        })
+        .catch((error) => console.log("Error al actualizar el producto", error));
+    } else {
+      axios.post(API_URL, data);
+    }
+    
     setNewProduct({
       name: "",
       price: "",
@@ -48,19 +66,16 @@ const ProductFormContainer = ({ onClose, setIsCreated }) => {
       category: "default",
       img: "",
     });
-    setIsCreated(true);
-    onClose();
+
+    setIsCreated(true);    
   };
 
   const handleChange = (e) => {
-    setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setNewProduct({ ...newProduct, [name]: value });
+    
   };
-
-  const defaultImage =
-    "https://static.vecteezy.com/system/resources/previews/005/080/698/non_2x/diamond-ring-icon-good-for-printing-in-trendy-two-tone-style-isolated-on-soft-blue-background-free-vector.jpg";
-  const handleImageError = () => {
-    setImageError(true);
-  };
+ 
 
   return (
     <ProductFormPresenter
@@ -69,6 +84,7 @@ const ProductFormContainer = ({ onClose, setIsCreated }) => {
       handleSubmit={handleSubmit}
       handleChange={handleChange}
       onClose={onClose}
+      selectedProduct={selectedProduct}
     />
   );
 };

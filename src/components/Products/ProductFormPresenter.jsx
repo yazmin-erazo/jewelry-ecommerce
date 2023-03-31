@@ -1,25 +1,26 @@
-import React from "react";
-
 const ProductFormPresenter = ({
   newProduct,
   error,
   handleSubmit,
   handleChange,
   onClose,
+  selectedProduct,
 }) => {
+
   return (
+    
     <form
-      className=" bg-white border rounded-lg py-8 px-5 z-11 relative"
+      className=" bg-white border rounded-lg py-8 px-5 z-11 relative text-sm"
       onSubmit={handleSubmit}
     >
       {error && (
-        <div className="bg-red-200 text-red-800 font-medium p-2 rounded-md mb-4">
+        <div className="bg-red-200 text-red-800 font-medium p-2 pl-4 rounded-md mb-4">
           Todos los campos son obligatorios
         </div>
       )}
-      <div className="mb-4">
+      <div className="mb-3">
         <label
-          htmlFor="product-name"
+          htmlFor="name"
           className="block text-gray-700 font-medium"
         >
           Nombre producto
@@ -29,12 +30,13 @@ const ProductFormPresenter = ({
           name="name"
           type="text"
           placeholder="Nombre del producto"
-          className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md text-sm"
+          className=" border w-full p-2 mt-2 placeholder-gray-400 rounded-md text-sm"
+          value={selectedProduct ? newProduct.name : ""}
           onChange={handleChange}
         />
       </div>
 
-      <div className="mb-4">
+      <div className="mb-3">
         <label htmlFor="price" className="block text-gray-700 font-medium">
           Precio producto
         </label>
@@ -43,12 +45,13 @@ const ProductFormPresenter = ({
           type="text"
           name="price"
           placeholder="Precio del producto"
-          className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md text-sm"
+          className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md text-sm"
+          value={selectedProduct ? newProduct.price : ""}
           onChange={handleChange}
         />
       </div>
 
-      <div className="mb-4">
+      <div className="mb-3">
         <label htmlFor="stock" className="block text-gray-700 font-medium">
           Cantidad
         </label>
@@ -57,7 +60,8 @@ const ProductFormPresenter = ({
           type="number"
           name="stock"
           placeholder="Cantidad"
-          className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md text-sm"
+          className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md text-sm"
+          value={selectedProduct ? newProduct.stock : ""}
           onChange={handleChange}
         />
       </div>
@@ -74,12 +78,13 @@ const ProductFormPresenter = ({
           type="text"
           name="description"
           placeholder="Describe el producto"
-          className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-32 resize-none text-sm"
+          className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md h-16 resize-none text-sm"
+          value={selectedProduct ? newProduct.description : ""}
           onChange={handleChange}
         />
       </div>
 
-      <div className="mb-4">
+      <div className="mb-3">
         <label
           htmlFor="category"
           className="block text-gray-700 font-medium mb-2"
@@ -89,8 +94,8 @@ const ProductFormPresenter = ({
         <select
           id="category"
           name="category"
-          defaultValue="default"
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400 focus:border-blue-400 text-sm"
+          value={selectedProduct ? newProduct.category : ""}
           onChange={handleChange}
         >
           <option value="default" disabled className="text-gray-400">
@@ -114,7 +119,7 @@ const ProductFormPresenter = ({
         </select>
       </div>
 
-      <div className="mb-4 mt-2">
+      <div className="mb-3">
         <label
           className="block text-gray-700 font-medium mb-2 cursor-pointer "
           htmlFor="img"
@@ -136,10 +141,15 @@ const ProductFormPresenter = ({
           value="Cancelar"
           onClick={onClose}
         />
+        
         <input
           type="submit"
-          className="mt-8  bg-indigo-600 w-full p-3 text-white uppercase font-medium rounded-lg hover:bg-indigo-700 cursor-pointer transition-all text-sm"
-          value="Agregar"
+          className={
+            selectedProduct
+              ? "mt-8 bg-blue-600 w-full p-3 text-white uppercase font-medium rounded-lg hover:bg-blue-700 cursor-pointer transition-all text-sm"
+              : "mt-8  bg-indigo-600 w-full p-3 text-white uppercase font-medium rounded-lg hover:bg-indigo-700 cursor-pointer transition-all text-sm"
+          }
+          value={selectedProduct ? "Actualizar producto" : "Agregar producto"}
         />
       </div>
     </form>

@@ -1,12 +1,18 @@
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const ProductList = ({ product, deleteProductById, updateProductById }) => {
+const ProductList = ({
+  product,
+  deleteProductById,
+  setSelectedProduct,
+  setShowModal,
+  updateProductById,
+}) => {
   const ringImg = "https://i.imgur.com/nIrKEXq.jpeg";
   const earringsImg = "https://i.imgur.com/tRC15fU.jpeg";
   const watchImg = "https://i.imgur.com/9KWnset.jpeg";
   const bracelet = "https://i.imgur.com/oACPehg.jpeg";
-  const neckalceImg = "https://i.imgur.com/XE8zM46.jpeg"
+  const neckalceImg = "https://i.imgur.com/XE8zM46.jpeg";
   return (
     <div className="mx-4">
       <div className="overflow-x-auto ">
@@ -19,20 +25,25 @@ const ProductList = ({ product, deleteProductById, updateProductById }) => {
               <td className="w-1/12 px-1 p-1 sm:table-cell">
                 <div className="flex justify-center items-center">
                   <img
-                    src={product.img === "" ? 
-                    (product.category === "anillos" ? ringImg : 
-                     product.category === "aretes" ? earringsImg :
-                     product.category === "reloj" ? watchImg :
-                     product.category === "pulseras" ? bracelet :
-                     neckalceImg)
-                    : product.img
-                  }
+                    src={
+                      product.img === ""
+                        ? product.category === "anillos"
+                          ? ringImg
+                          : product.category === "aretes"
+                          ? earringsImg
+                          : product.category === "reloj"
+                          ? watchImg
+                          : product.category === "pulseras"
+                          ? bracelet
+                          : neckalceImg
+                        : product.img
+                    }
                     alt={product.name}
                     className="lg:w-10 rounded-md"
                   />
                 </div>
               </td>
-              <td className="w-1/12 overflow-ellipsis whitespace-nowrap truncate px-2 py-2 text-xs md:text-sm text-right sm:table-cell">
+              <td className="w-1/12 h-auto overflow-ellipsis whitespace-normal truncate sm:whitespace-normal px-2 py-2 text-xs md:text-sm text-left sm:table-cell">
                 {product.name}
               </td>
               <td className="w-1/12 px-2 py-2 text-xs md:text-sm text-right sm:table-cell">
@@ -52,11 +63,16 @@ const ProductList = ({ product, deleteProductById, updateProductById }) => {
                   <FontAwesomeIcon
                     onClick={() => deleteProductById(product.id)}
                     icon={faTrash}
-                    className="p-2 hover:bg-red-600 rounded-md hover:text-white"
+                    className="p-2 hover:bg-red-600 rounded-md hover:text-white cursor-pointer"
                   />
                   <FontAwesomeIcon
+                    onClick={() => {
+                      setSelectedProduct(null);
+                      setShowModal(true);
+                      updateProductById(product.id);
+                    }}
                     icon={faEdit}
-                    className="p-2 ml-2 hover:bg-blue-600 rounded-md hover:text-white"
+                    className="p-2 ml-2 hover:bg-blue-600 rounded-md hover:text-white cursor-pointer"
                   />
                 </div>
               </td>

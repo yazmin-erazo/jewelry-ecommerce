@@ -10,9 +10,10 @@ const ProductPresenter = ({
   handleToggle,
   viewMode,
   deleteProductById,
-  updateProductById,
   onOpen,
-  isCreated,
+  setSelectedProduct,
+  setShowModal,
+  updateProductById,
 }) => {
   return (
     <section className="mt-8 container m-auto ">
@@ -33,8 +34,10 @@ const ProductPresenter = ({
                   <div key={product.id}>
                     <ProductList
                       product={product}
-                      updateProductById={updateProductById}
                       deleteProductById={deleteProductById}
+                      setSelectedProduct={setSelectedProduct}
+                      setShowModal={setShowModal}
+                      updateProductById={updateProductById}
                     />
                   </div>
                 );
@@ -44,8 +47,10 @@ const ProductPresenter = ({
                   <div key={product.id} className="w-full lg:w-1/2 lg:inline-block">
                     <ProductCards
                       product={product}
-                      updateProductById={updateProductById}
                       deleteProductById={deleteProductById}
+                      setSelectedProduct={setSelectedProduct}
+                      setShowModal={setShowModal}
+                      updateProductById={updateProductById}
                     />
                   </div>
                 );
