@@ -3,7 +3,7 @@ import { faThLarge, faList } from "@fortawesome/free-solid-svg-icons";
 
 const Toggle = ({ viewMode, handleToggle }) => {
   return (
-    <div className="mx-4 flex justify-end">
+    <div className="flex justify-end">
       <label
         htmlFor="toggle"
         className={`checked:border-gray-700 ml-2 cursor-pointer text-gray-700 ${

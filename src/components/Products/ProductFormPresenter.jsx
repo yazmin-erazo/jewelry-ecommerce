@@ -31,7 +31,7 @@ const ProductFormPresenter = ({
           type="text"
           placeholder="Nombre del producto"
           className=" border w-full p-2 mt-2 placeholder-gray-400 rounded-md text-sm"
-          value={selectedProduct && newProduct.name}
+          value={selectedProduct && newProduct.name || ''}
           onChange={handleChange}
         />
       </div>
@@ -46,7 +46,7 @@ const ProductFormPresenter = ({
           name="price"
           placeholder="Precio del producto"
           className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md text-sm"
-          value={selectedProduct && newProduct.price}
+          value={selectedProduct && newProduct.price || ''}
           onChange={handleChange}
         />
       </div>
@@ -61,7 +61,7 @@ const ProductFormPresenter = ({
           name="stock"
           placeholder="Cantidad"
           className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md text-sm"
-          value={selectedProduct && newProduct.stock}
+          value={selectedProduct && newProduct.stock || ''}
           onChange={handleChange}
         />
       </div>
@@ -79,7 +79,7 @@ const ProductFormPresenter = ({
           name="description"
           placeholder="Describe el producto"
           className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md h-16 resize-none text-sm"
-          value={selectedProduct && newProduct.description}
+          value={selectedProduct && newProduct.description || ''}
           onChange={handleChange}
         />
       </div>
@@ -95,7 +95,7 @@ const ProductFormPresenter = ({
           id="category"
           name="category"
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400 focus:border-blue-400 text-sm"
-          value={selectedProduct && newProduct.category}
+          value={selectedProduct && newProduct.category || ''}
           onChange={handleChange}
         >
           <option value="default" disabled className="text-gray-400">

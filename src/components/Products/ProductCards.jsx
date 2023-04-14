@@ -12,7 +12,7 @@ const ProductCards = ({
   const neckalceImg = "https://i.imgur.com/XE8zM46.jpeg";
 
   return (
-    <section className="mt-8 mx-3 mb-4 bg-white flex flex-col sm:flex-row rounded-lg overflow-hidden border shadow-md">
+    <section className="mt-4 mx-3 mb-4 bg-white flex flex-col sm:flex-row rounded-lg overflow-hidden border shadow-md">
       <div className="flex-shrink-0 self-center">
         <div className=" h-36  sm:h-56 sm:w-56">
           <img

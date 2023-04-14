@@ -16,9 +16,9 @@ const ProductPresenter = ({
   updateProductById,
 }) => {
   return (
-    <section className="mt-8 container m-auto ">
+    <section className="container m-auto ">
       <div>
-        <div className="flex justify-between items-center ">
+        <div className=" flex justify-between items-center ">
           <Button
             label="Agregar producto"
             icon={faPlusCircle}
@@ -26,7 +26,7 @@ const ProductPresenter = ({
           />
           <Toggle viewMode={viewMode} handleToggle={handleToggle} />
         </div>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap mt-4">
           {viewMode === "list" && <ProductTableHeader />}
           {viewMode === "list"
             ? items.map((product) => {

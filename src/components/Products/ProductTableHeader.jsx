@@ -1,6 +1,6 @@
 const ProductTableHeader = () => {
   return (
-    <div className="mx-4 mt-8 ">
+    <div className="mt-8 ">
       <div className="overflow-x-auto rounded-t-md">
         <table className="w-full table-auto " style={{tableLayout: 'fixed'}}>
           <thead className="text-white text-xs text-right">
